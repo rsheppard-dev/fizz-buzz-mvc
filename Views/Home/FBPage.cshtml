@@ -1,0 +1,67 @@
+﻿@model fizz_buzz_mvc.Models.FizzBuzz
+
+<h1 class="text-dark mb-3">FizzBuzz</h1>
+<h2 class="h4 text-dark mb-4 font-primary">Input Values:</h2>
+<form class="row g-3" asp-controller="Home" asp-action="FBPage" method="post">
+    <div class="col-12 col-sm-6">
+        <label asp-for="StartValue" class="form-label font-secondary">Start Value:</label>
+        <input type="number"
+               asp-for="StartValue"
+               id="startValue"
+               class="form-control"
+               aria-label="Start Value"
+               value="@Model.StartValue" />
+    </div>
+    <div class="col-12 col-sm-6">
+        <label asp-for="EndValue" class="form-label font-secondary">End Value:</label>
+        <input type="number"
+               asp-for="EndValue"
+               id="endValue"
+               class="form-control"
+               aria-label="End Value"
+               value="@Model.EndValue" />
+    </div>
+    <div class="col-12 col-sm-6">
+        <label asp-for="FizzValue" class="form-label font-secondary">Fizz Value:</label>
+        <input type="number"
+               asp-for="FizzValue"
+               id="fizzValue"
+               class="form-control"
+               aria-label="Fizz Value"
+               value="@Model.FizzValue" />
+    </div>
+    <div class="col-12 col-sm-6">
+        <label asp-for="BuzzValue" class="form-label font-secondary">Buzz Value:</label>
+        <input type="number"
+               asp-for="BuzzValue"
+               id="buzzValue"
+               class="form-control"
+               aria-label="Buzz Value"
+               value="@Model.BuzzValue" />
+    </div>
+    <div>
+        <button id="submit" class="btn btn-warning my-2">FizzBuzz</button>
+    </div>
+    <div id="error" class="d-none text-bg-danger p-3 rounded"></div>
+</form>
+
+<hr />
+
+<h3 class="h4 text-dark my-4">View Results:</h3>
+
+<div class="table-responsive">
+    <table class="table table-striped">
+        <tbody id="results">
+            @for (int i = 0; i < Model.Result.Count(); i += 5)
+            {
+                <tr>
+                    <td>@Model.Result[i]</td>
+                    <td>@Model.Result[i + 1]</td>
+                    <td>@Model.Result[i + 2]</td>
+                    <td>@Model.Result[i + 3]</td>
+                    <td>@Model.Result[i + 4]</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
